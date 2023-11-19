@@ -63,19 +63,24 @@ public class GUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Check which option is selected
-                if (option1.isSelected()) {
-                    game.processAnswer(Game.currentOptions[0]);
-                } else if (option2.isSelected()) {
-                    game.processAnswer(Game.currentOptions[1]);
-                } else if (option3.isSelected()) {
-                    game.processAnswer(Game.currentOptions[2]);
-                } else if (option4.isSelected()) {
-                    game.processAnswer(Game.currentOptions[3]);
-                } else {
-                    JOptionPane.showMessageDialog(GUI.this, "Please select an option");
+                try {
+                    if (option1.isSelected()) {
+                        game.processAnswer(Game.currentOptions[0]);
+                    } else if (option2.isSelected()) {
+                        game.processAnswer(Game.currentOptions[1]);
+                    } else if (option3.isSelected()) {
+                        game.processAnswer(Game.currentOptions[2]);
+                    } else if (option4.isSelected()) {
+                        game.processAnswer(Game.currentOptions[3]);
+                    } else {
+                        JOptionPane.showMessageDialog(GUI.this, "Please select an option");
+                    }
+
+                    resetGameState();
+                } catch (GameException excep) {
+                    System.out.println(excep);
                 }
 
-                resetGameState();
             }
         });
 

@@ -16,7 +16,9 @@ public class Game extends Math {
     public static int correctIndex;
     public static int score = 0;
 
+    // Primary Constructor
     public Game() {
+        // Initialize First Game Props
         Options options = new Options();
         currentProblem = generateProblem();
         correctIndex = generateRandomNumber(4);
@@ -26,6 +28,7 @@ public class Game extends Math {
         }
     }
 
+    // Alternate Constructor for premade info
     public Game(String currentProblem, String[] currentOptions, int correctIndex) {
         this.currentOptions = currentOptions;
         this.currentProblem = currentProblem;
@@ -49,6 +52,7 @@ public class Game extends Math {
     }
 
     public void restartGame() {
+        // Restarts the Game
         Options options = new Options();
         currentProblem = generateProblem();
         correctIndex = generateRandomNumber(4);
@@ -61,7 +65,6 @@ public class Game extends Math {
         if (score < 0)
             throw new GameException("Score is critcally low!");
 
-        // Example logic:
         if (selectedOption.equals(Game.currentOptions[Game.correctIndex])) {
             playSound(true);
 
@@ -94,9 +97,7 @@ public class Game extends Math {
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
-            // If you want the sound to loop infinitely, then put:
-            // clip.loop(Clip.LOOP_CONTINUOUSLY);
-            // If you want to stop the sound, then use clip.stop();
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
